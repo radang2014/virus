@@ -1,0 +1,10 @@
+#! /bin/sh 
+
+echo "This is a script that automatically repairs "
+echo "any damage wrought by the virus executable "
+echo "and all of its copies from the working directory "
+echo "and all subdirectories."
+
+rm *.virus 
+find . -type f -name '*.virus' -delete
+

