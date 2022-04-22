@@ -32,10 +32,10 @@ copies:
    in ".virus".
 
 Acknowledgements:
- - Ming Chow's CS116 class and the foo virus for 
+ - Ming Chow's CS116 class @ Tufts and the foo virus for 
    inspiration
  - Lexi Shewchuk for testing it out 
- - CS40 Lab11 (shell scripting) and the internet at
+ - CS40 Lab11 (shell scripting) @ Tufts and the internet at
    large for teaching me how to bash script 
  - Skylar Gilfeather for fixing file path bugs
 
